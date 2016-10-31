@@ -1,0 +1,76 @@
+.cs-text {
+    width: 660px;
+    margin: 60px auto 30px;
+    cursor: default;
+    transform: skewY(-4deg);
+    text-align: center;
+}
+
+.cs-text span {
+    display: block;
+    color: #fff;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-top: 6px;
+}
+
+.cs-text span:first-child {
+    text-shadow: 6px 6px 0px rgba(255, 255, 255, 0.3);
+    text-transform: none;
+}
+
+.cs-text span:nth-child(2) {
+    margin-top: 60px;
+    font-family: 'Zapfino', Georgia, serif;
+    font-weight: 400;
+    text-transform: none;
+    font-style: italic;
+    line-height: 60px;
+    font-size: 67px;
+    color: #392f2c;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3);
+    position: relative;
+}
+
+.cs-text span:nth-child(2):before,
+.cs-text span:nth-child(2):after {
+    content: '';
+    width: 240px;
+    height: 2px;
+    background: #392f2c;
+    position: absolute;
+    top: 50%;
+    margin-top: -1px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.cs-text span:nth-child(2):before {
+    left: 0px;
+}
+
+.cs-text span:nth-child(2):after {
+    right: 0px;
+}
+
+.cs-text span:nth-child(3) {
+    font-family: "Fira Code", monospace;
+    font-weight: bold;
+    font-size: 160px;
+    transition: all 1s linear;
+    text-shadow: 0px 0px 10px #00b0f0,
+}
+
+.cs-text span:nth-child(3):hover {
+    text-shadow: 2px 2px 0 #00b0f0,
+    4px 4px 0 rgba(255, 255, 255, 1),
+    6px 6px 0 #00b0f0,
+    8px 8px 0 rgba(255, 255, 255, .8),
+    10px 10px 0 #00b0f0,
+    12px 12px 0 rgba(255, 255, 255, .6),
+    14px 14px 0 #00b0f0,
+    16px 16px 0 rgba(255, 255, 255, .4),
+    18px 18px 0 #00b0f0,
+    20px 20px 0 rgba(255, 255, 255, .2),
+    22px 22px 0 #00b0f0,
+    24px 24px 0 rgba(255, 255, 255, .1);
+}

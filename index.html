@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Shower Presentation Engine</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="cover.css">
+  <link rel="stylesheet" href="node_modules/shower-theme-devfest/styles/screen-16x10.css">
+  <style>
+    .important {
+      color: #9B26AF;
+    }
+
+    .slide::before {
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      right: 0;
+      padding-top: 32px;
+      color: #00b0f0;
+      font-size: 1rem;
+      background: url(pictures/devfest-logo-blue.svg) no-repeat;
+      background-position: right;
+      padding-left: 100px;
+      content: '#DevFestToulouse #Feign @ilaborie';
+    }
+
+    .slide.blue::before {
+      background: url(pictures/devfest-logo-white.svg) no-repeat;
+      background-position: right;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body class="shower list">
+
+<header class="caption">
+  <h1>Client REST en Java: trop facile avec Feign !</h1>
+  <p>Igor Laborie</p>
+</header>
+
+<section class="slide blue center" id="cover">
+  <h2 class="cs-text">
+    <span class="word1">Java REST client</span>
+    <span class="word2">with</span>
+    <span class="word3">Feign</span>
+  </h2>
+  <style>
+    #cover::after {
+      visibility: hidden;
+    }
+  </style>
+</section>
+
+<section class="slide blue" id="me">
+  <h2><span class="fa fa-terminal"></span> <code>whoami</code></h2>
+
+  <address>
+    <h3>Igor Laborie</h3>
+    <div class="job">
+      Expert Java & Web,
+      <a href="http://www.monkeypatch.io/">
+        <img src="pictures/logo-monkey.svg" alt="MonkeyPatch">
+      </a>
+    </div>
+
+    <span class="fa fa-twitter"></span>
+    <a href="https://twitter.com/ilaborie">@ilaborie</a><br>
+
+    <span class="fa fa-envelope-o"></span>
+    <a href="mailto:igor@monkeypatch.io">igor@monkeypatch.io</a>
+  </address>
+  <style>
+    #me a {
+      text-decoration: none;
+      background: none;
+      border: 0;
+    }
+
+    #me .job {
+      display: flex;
+      align-items: center;
+    }
+
+    #me .job img {
+      max-height: 2em;
+    }
+
+    #me address h3 {
+      font-size: 2.5rem;
+    }
+
+    #me address {
+      margin-top: 8rem;
+    }
+  </style>
+</section>
+
+
+<section class="slide" id="roadmap">
+  <h2>Roadmap</h2>
+  <ol>
+    <li>
+      Basic
+      <ul>
+        <li class="code">CRUD operations, JSON</li>
+      </ul>
+    </li>
+    <li>
+      Advanced
+      <ul>
+        <li class="code">Async with RxJava</li>
+        <li class="code">Circuit Breaker with Hystrix</li>
+        <li class="code">HTTP/2 with Java 9</li>
+      </ul>
+    </li>
+  </ol>
+</section>
+
+<section class="slide" id="feign">
+  <h2><span class="fa fa-terminal"></span> <code>whois feign</code></h2>
+  <p>
+    <span class="fa fa-github"></span>
+    <a href="https://github.com/OpenFeign/feign">https://github.com/OpenFeign/feign</a>
+  </p>
+  <p>Open Source: <a href="https://www.apache.org/licenses/LICENSE-2.0">license Apache 2.0</a></p>
+  <p class="netfix">A Netflix Project</p>
+  <p>Java 7+, Java 8 friendly</p>
+  <p>Not opinionated</p>
+  <style>
+    #feign .netfix {
+      text-decoration: line-through;
+    }
+  </style>
+</section>
+
+<section class="slide" id="vs">
+  <h2><span class="fa fa-terminal"></span> <code>du -h target/*.jar</code></h2>
+  <table>
+    <tr>
+      <th scope="col"></th>
+      <th>Classes</th>
+      <th>Fat jar</th>
+    </tr>
+    <tr>
+      <th scope="row">Jersey (JAX-RS 2)</th>
+      <td>112<sup>*</sup></td>
+      <td>4,6 Mo</td>
+    </tr>
+    <tr>
+      <th scope="row">Retrofit 2</th>
+      <td>38</td>
+      <td>740 Ko</td>
+    </tr>
+    <tr>
+      <th scope="row">Feign</th>
+      <td>34</td>
+      <td>336 Ko</td>
+    </tr>
+  </table>
+  <p>*: only into <code>javax.ws.rs</code></p>
+  <p class="note">
+    <span class="fa fa-github"></span>
+    <a href="https://github.com/ilaborie/feign-live">See code on github</a>
+  </p>
+</section>
+
+<section class="slide center" id="quote1">
+  <figure>
+    <blockquote>
+      <p>Most Java applications require a persistent class representing felines.</p>
+    </blockquote>
+    <figcaption>
+      Hibernate Documentation
+      <a href="http://docs.jboss.org/hibernate/orm/3.3/reference/fr-FR/html/persistent-classes.html#persistent-classes-pojo">...</a>
+    </figcaption>
+  </figure>
+</section>
+
+<section class="slide center" id="quote2">
+  <figure>
+    <blockquote>
+      <p>Most Java applications require a <strong>microservice</strong> for felines.</p>
+    </blockquote>
+    <figcaption>Any buzzword addicts</figcaption>
+  </figure>
+</section>
+
+<section class="slide" id="swagger">
+  <h2><span class="fa fa-terminal"></span> <code>curl http://cats/swagger</code></h2>
+  <figure>
+    <img src="pictures/Swagger.png" alt="Swagger Documentation">
+  </figure>
+  <p class="note">
+    Run with: <code>docker run -p 8080:8080 ilaborie/cats-microservice</code><br>
+    <span class="fa fa-github"></span>
+    <a href="https://github.com/ilaborie/cat-microservice">See code on github</a>
+  </p>
+  <style>
+    #swagger figure img {
+      max-width: 100%;
+    }
+    #swagger .note {
+      font-size: .8em;
+    }
+  </style>
+</section>
+
+<section class="slide blue center" id="live1">
+  <h2><span class="fa fa-code"></span> Live coding</h2>
+  <h3>CRUD operations, JSON</h3>
+  <p class="note">
+    <span class="fa fa-github"></span>
+    <a href="https://github.com/ilaborie/feign-live">See code on github</a>
+  </p>
+</section>
+
+<section class="slide" id="ext1">
+  <h2>Encoders & Decoders</h2>
+  <ul>
+    <li>
+      JSON with
+      <ul class="unstyled">
+        <li><a href="https://github.com/google/gson">GSON</a>: <a
+                href="https://github.com/OpenFeign/feign/tree/master/gson"><code>feign-gson</code></a> or
+        </li>
+        <li><a href="https://github.com/FasterXML/jackson">Jackson</a>: <a
+                href="https://github.com/OpenFeign/feign/tree/master/jackson"><code>feign-jackson</code></a></li>
+      </ul>
+    </li>
+    <li>
+      XML with
+      <ul class="unstyled">
+        <li><a href="https://jaxb.java.net/">JAXB</a>: <a
+                href="https://github.com/OpenFeign/feign/tree/master/jaxb"><code>feign-jaxb</code></a>,
+        </li>
+        <li><a href="https://github.com/FasterXML/jackson">Jackson JAXB</a>: <a
+                href="https://github.com/OpenFeign/feign/tree/master/jackson-jaxb"><code>jackson-jaxb</code></a> or
+        </li>
+        <li><a href="https://docs.oracle.com/javase/8/docs/api/org/xml/sax/package-summary.html">SAX</a>: <a
+                href="https://github.com/OpenFeign/feign/tree/master/sax"><code>feign-sax</code></a> <em>(decoder
+          only)</em></li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section class="slide" id="hood">
+  <h2>Under the hood</h2>
+  <p>
+    <span class="fa fa-magic"></span>
+    No White/Dark Magic<br>
+    The
+    <code><a
+            href="https://docs.oracle.com/javase/8/docs/api/java/lang/reflect/Proxy.html">java.lang.reflect.Proxy</a></code>
+    allow you to dynamically implement the interface.
+  </p>
+  <p>
+    Use the
+    <code><a
+            href="https://docs.oracle.com/javase/8/docs/api/java/net/HttpURLConnection.html">java.net.HttpURLConnection</a></code>
+    to send and process HTTP requests. <em>(by default)</em></p>
+  <p class="note">
+    Use the reflection API to extract meta-data.<br>
+    If you prefer JAX-RS annotation you can use
+    <code><a href="https://github.com/OpenFeign/feign/tree/master/jaxrs">feign-jaxrs</a></code>.
+  </p>
+  <style>
+    #hood .fa-magic {
+      text-decoration: line-through;
+    }
+  </style>
+</section>
+
+<section class="slide" id="async">
+  <h2>How to be <em>async</em> ?</h2>
+  <p class="important">Do not write a custom <code>feign.Decoder</code>!</p>
+  <p>You can use Java 8 <a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html"><code>CompletableFuture</code></a>
+  </p>
+  <p>Or the <code><a href="https://github.com/OpenFeign/feign/tree/master/hystrix">feign-hystrix</a></code>
+    provide <a href="https://github.com/ReactiveX/RxJava">RxJava</a> support</p>
+</section>
+
+<section class="slide blue center" id="live2">
+  <h2><span class="fa fa-code"></span> Live coding</h2>
+  <h3>Async with <img src="pictures/Rx.png" alt="ReactiveX"></h3>
+  <p class="note">
+    <span class="fa fa-github"></span>
+    <a href="https://github.com/ilaborie/feign-live/commit/4c4d6329371a74ec8ac597143fb64480287ade2f">See code on
+      github</a>
+  </p>
+  <style>
+    #live2 h3 {
+      display: flex;
+      align-items: center;
+    }
+
+    #live2 h3 img {
+      margin-left: 1rem;
+    }
+  </style>
+</section>
+
+<section class="slide" id="circuit-breaker">
+  <h2>Circuit Breaker</h2>
+  <figure>
+    <img src="pictures/circuit-breaker.jpg">
+    <figcaption>
+      By Bidgee (Own work) <a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>, via Wikimedia
+      Commons
+    </figcaption>
+  </figure>
+  <style>
+    #circuit-breaker figure {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #circuit-breaker figure figcaption {
+      margin: -2em;
+      color: rgba(255, 255, 255, .5);
+      font-size: 1rem;
+    }
+
+    #circuit-breaker figure figcaption a {
+      color: rgba(255, 255, 255, .5);
+      text-decoration: underline;
+    }
+  </style>
+</section>
+
+<section class="slide blue center" id="live3">
+  <h2><span class="fa fa-code"></span> Live coding</h2>
+  <h3>Circuit Breaker with <img src="pictures/hystrix.png" alt="Hystrix"></h3>
+  <p class="note">
+    <span class="fa fa-github"></span>
+    <a href="https://github.com/ilaborie/feign-live/tree/base-cb">See code on github</a>
+  </p>
+  <style>
+    #live3 h3 {
+      display: flex;
+      align-items: center;
+    }
+
+    #live3 h3 img {
+      margin-left: 1rem;
+    }
+  </style>
+</section>
+
+<section class="slide" id="java9">
+  <h2>Incoming train ....</h2>
+  <p>
+    <span class="fa fa-download"></span>
+    <a href="https://jdk9.java.net/download/">Download Java 9 Early Access</a><br>
+    <em>Can be downloaded with/without Jigsaw</em>
+  </p>
+  <p>Or use docker:</p>
+  <p><code>docker run openjdk:9 java -version</code></p>
+  <p><code>docker run maven:3-jdk-9 mvn -version</code></p>
+</section>
+
+<section class="slide" id="jep110">
+  <h2><a href="http://openjdk.java.net/jeps/110">JEP 110: HTTP/2 Client</a></h2>
+  <p>
+    <span class="fa fa-book"></span>
+    <a href="http://download.java.net/java/jdk9/docs/api/java/net/http/package-summary.html">java.net.http</a>
+  </p>
+  <pre>
+<code><span class="className">URI</span> uri = new <span class="className">URI</span>(<span class="string">"http://127.0.0.1:8080/hello"</span>)</code>
+<code><span class="className">HttpResponse</span> resp = <span class="className">HttpRequest</span>.create(uri)</code>
+<code>    .GET().response();</code>
+<code><span class="keyword">int</span> statusCode = resp.statusCode();</code>
+<code><span class="className">String</span> body = resp.body(<span
+        class="className">HttpResponse</span>.asString());</code>
+<code><span class="className">System</span>.out.printf(<span
+        class="string">"[%s] %s\n"</span>, statusCode, body);</code>
+</pre>
+</section>
+
+<section class="slide blue center" id="live4">
+  <h2><span class="fa fa-code"></span> Live coding</h2>
+  <h3>
+    <span>Custom <code>feign.Client</code> with</span>
+    <img src="pictures/Java9.png" alt="Java 9">
+  </h3>
+  <p class="note">
+    <span class="fa fa-github"></span>
+    <a href="https://github.com/ilaborie/feign-live/tree/java9">See code on github</a>
+  </p>
+  <style>
+    #live4 h3 {
+      display: flex;
+      align-items: center;
+    }
+
+    #live4 h3 img {
+      margin-left: 1rem;
+    }
+  </style>
+</section>
+
+<section class="slide" id="other">
+  <h2><code>feign.Client</code> implementation</h2>
+  <ul>
+    <li>
+      <a href="https://hc.apache.org/httpcomponents-client-ga/">Apache HttpClient</a>:
+      <a href="https://github.com/OpenFeign/feign/tree/master/httpclient"><code>feign-httpclient</code></a>
+    </li>
+    <li>
+      <a href="http://square.github.io/okhttp/">OkHttp</a>:
+      <a href="https://github.com/OpenFeign/feign/tree/master/okhttp"><code>feign-okhttp</code></a>
+    </li>
+    <li>
+      <a href="https://github.com/Netflix/ribbon">Ribbon</a>:
+      <a href="https://github.com/OpenFeign/feign/tree/master/ribbon"><code>feign-ribbon</code></a>
+      <em>Load balancing support</em>
+    </li>
+  </ul>
+</section>
+
+<section class="slide blue" id="conclusion">
+  <h2>So why feign:</h2>
+  <p>Open & active community</p>
+  <p>Simple & intuitive</p>
+  <p>Extensible, useful plugins, easy to write your own</p>
+  <p>Not opinionated</p>
+</section>
+
+<section class="slide blue center" id="qa">
+  <figure>
+    <img src="pictures/question.png" alt="Question">
+    <figcaption>
+      <h2 style="text-align: center">Any Question ?</h2>
+    </figcaption>
+  </figure>
+  <style>
+    #qa figure {
+      text-align: center;
+    }
+
+    #qa figure img {
+      max-height: 25vh;
+    }
+  </style>
+</section>
+
+
+<div class="progress"></div>
+
+<script src="node_modules/shower-core/shower.min.js"></script>
+
+</body>
+
+</html>
