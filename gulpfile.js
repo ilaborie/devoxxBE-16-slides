@@ -19,7 +19,9 @@ gulp.task('prepare', () => {
     '!LICENSE.md',
     '!README.md',
     '!gulpfile.js',
-    '!package.json'
+    '!package.json',
+    '!yarn.lock',
+    '!*.iml'
   ];
   const shower = gulp.src(paths)
     .pipe(replace(/(<link rel="stylesheet" href=")(node_modules\/shower-)([^\/]*)\/(.*\.css">)/g, '$1shower/themes/$3/$4', {skipBinary: true}))
@@ -42,7 +44,7 @@ gulp.task('prepare', () => {
 
   const theme = gulp.src(['**', '!package.json'], {cwd: 'node_modules/shower-theme-devfest'})
     .pipe(rename((path) => {
-      path.dirname = 'shower/themes/ribbon/' + path.dirname;
+      path.dirname = 'shower/themes/theme-devfest/' + path.dirname;
     }));
 
   const themes = merge(theme)

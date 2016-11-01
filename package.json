@@ -6,13 +6,13 @@
     "name": "Igor Laborie",
     "url": "http://ilaborie/"
   },
-  "homepage": "https://github.com/shower/shower",
+  "homepage": "https://github.com/ilaborie/devfest-toulouse-16-slides",
   "repository": {
     "type": "git",
-    "url": "git://github.com/shower/shower.git"
+    "url": "git://github.com/ilaborie/devfest-toulouse-16-slides.git"
   },
   "bugs": {
-    "url": "http://github.com/shower/shower/issues"
+    "url": "http://github.com/ilaborie/devfest-toulouse-16-slides/issues"
   },
   "license": "MIT",
   "keywords": [
