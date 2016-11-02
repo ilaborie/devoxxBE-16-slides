@@ -2,12 +2,13 @@
 <html lang="en">
 
 <head>
-  <title>Shower Presentation Engine</title>
+  <title>Feign</title>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="cover.css">
   <link rel="stylesheet" href="node_modules/shower-theme-devfest/styles/screen-16x10.css">
+  <!--<link rel="stylesheet" href="node_modules/shower-theme-devfest/styles/screen-4x3.css">-->
   <style>
     .important {
       color: #9B26AF;
@@ -61,7 +62,7 @@
   <address>
     <h3>Igor Laborie</h3>
     <div class="job">
-      Expert Java & Web,
+      Expert Java &amp; Web,
       <a href="http://www.monkeypatch.io/">
         <img src="pictures/logo-monkey.svg" alt="MonkeyPatch">
       </a>
@@ -118,6 +119,10 @@
       </ul>
     </li>
   </ol>
+</section>
+
+<section class="slide blue center" id="basic">
+  <h2>Basic</h2>
 </section>
 
 <section class="slide" id="feign">
@@ -212,14 +217,14 @@
 <section class="slide blue center" id="live1">
   <h2><span class="fa fa-code"></span> Live coding</h2>
   <h3>CRUD operations, JSON</h3>
-  <p class="note">
+  <p>
     <span class="fa fa-github"></span>
     <a href="https://github.com/ilaborie/feign-live">See code on github</a>
   </p>
 </section>
 
 <section class="slide" id="ext1">
-  <h2>Encoders & Decoders</h2>
+  <h2>Encoders &amp; Decoders</h2>
   <ul>
     <li>
       JSON with
@@ -275,6 +280,10 @@
   </style>
 </section>
 
+<section class="slide blue center" id="advanced">
+  <h2>Advanced</h2>
+</section>
+
 <section class="slide" id="async">
   <h2>How to be <em>async</em> ?</h2>
   <p class="important">Do not write a custom <code>feign.Decoder</code>!</p>
@@ -287,7 +296,7 @@
 <section class="slide blue center" id="live2">
   <h2><span class="fa fa-code"></span> Live coding</h2>
   <h3>Async with <img src="pictures/Rx.png" alt="ReactiveX"></h3>
-  <p class="note">
+  <p>
     <span class="fa fa-github"></span>
     <a href="https://github.com/ilaborie/feign-live/commit/4c4d6329371a74ec8ac597143fb64480287ade2f">See code on
       github</a>
@@ -336,7 +345,7 @@
 <section class="slide blue center" id="live3">
   <h2><span class="fa fa-code"></span> Live coding</h2>
   <h3>Circuit Breaker with <img src="pictures/hystrix.png" alt="Hystrix"></h3>
-  <p class="note">
+  <p>
     <span class="fa fa-github"></span>
     <a href="https://github.com/ilaborie/feign-live/tree/base-cb">See code on github</a>
   </p>
@@ -388,7 +397,7 @@
     <span>Custom <code>feign.Client</code> with</span>
     <img src="pictures/Java9.png" alt="Java 9">
   </h3>
-  <p class="note">
+  <p>
     <span class="fa fa-github"></span>
     <a href="https://github.com/ilaborie/feign-live/tree/java9">See code on github</a>
   </p>
@@ -414,6 +423,7 @@
     <li>
       <a href="http://square.github.io/okhttp/">OkHttp</a>:
       <a href="https://github.com/OpenFeign/feign/tree/master/okhttp"><code>feign-okhttp</code></a>
+      <em>HTTP/2 &amp; caching support</em>
     </li>
     <li>
       <a href="https://github.com/Netflix/ribbon">Ribbon</a>:
@@ -425,8 +435,8 @@
 
 <section class="slide blue" id="conclusion">
   <h2>So why feign:</h2>
-  <p>Open & active community</p>
-  <p>Simple & intuitive</p>
+  <p>Open &amp; active community</p>
+  <p>Simple &amp; intuitive</p>
   <p>Extensible, useful plugins, easy to write your own</p>
   <p>Not opinionated</p>
 </section>

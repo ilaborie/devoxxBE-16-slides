@@ -1571,7 +1571,7 @@ sequencify@~0.0.7:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/sequencify/-/sequencify-0.0.7.tgz#90cff19d02e07027fd767f5ead3e7b95d1e7380c"
 
-shower-bekk:
+shower-bekk@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/shower-bekk/-/shower-bekk-1.2.1.tgz#3501901285eab0cf251efa2e057cfc9d6bb1dde6"
 
@@ -1583,7 +1583,7 @@ shower-material@^1.0.6:
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/shower-material/-/shower-material-1.0.7.tgz#459f0375ffccfa574594f51575ae0c29fb651ef7"
 
-shower-red-material:
+shower-red-material@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/shower-red-material/-/shower-red-material-1.0.1.tgz#267ebec00f963f0abfb8a11343c04b31812eb410"
 
@@ -1591,9 +1591,9 @@ shower-ribbon@^2.0.7:
   version "2.0.8"
   resolved "https://registry.yarnpkg.com/shower-ribbon/-/shower-ribbon-2.0.8.tgz#8a113e3dd0f2609a475016890977bcf102345cb3"
 
-shower-theme-devfest:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/shower-theme-devfest/-/shower-theme-devfest-0.0.2.tgz#13962a2ef4898c518f53238891c412155cd10b31"
+shower-theme-devfest@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/shower-theme-devfest/-/shower-theme-devfest-0.0.3.tgz#0fb8ab3c4d80a01a0af4395a0d345dec19b086bd"
   dependencies:
     font-awesome "^4.7.0"
 
