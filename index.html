@@ -31,13 +31,24 @@
     .slide.blue::before {
       color: #fff;
     }
+    .slide.code {
+      display: none;
+    }
+
+    pre code .tag {
+      color: #00b0f0;
+    }
+
+    pre code .annotation {
+      color: #666;
+    }
   </style>
 </head>
 
 <body class="shower list">
 
 <header class="caption">
-  <h1>Client REST en Java: trop facile avec Feign !</h1>
+  <h1>Feign in Action</h1>
   <p>Igor Laborie</p>
 </header>
 
@@ -189,6 +200,86 @@
   </p>
 </section>
 
+
+<section class="slide code" id="maven">
+  <h2>Maven dependencies</h2>
+  <p>Current lastest release: <a href="https://github.com/OpenFeign/feign/releases">9.3.1</a></p>
+  <pre>
+<code><span class="tag">&lt;dependency&gt;</span></code>
+<code>  <span class="tag">&lt;groupId&gt;</span>io.github.openfeign<span class="tag">&lt;/groupId&gt;</span></code>
+<code>  <span class="tag">&lt;artifactId&gt;</span>feign-core<span class="tag">&lt;/artifactId&gt;</span></code>
+<code>  <span class="tag">&lt;version&gt;</span>${feign.version}<span class="tag">&lt;/version&gt;</span></code>
+<code><span class="tag">&lt;/dependency&gt;</span></code>
+<code><span class="tag">&lt;dependency&gt;</span></code>
+<code>  <span class="tag">&lt;groupId&gt;</span>io.github.openfeign<span class="tag">&lt;/&gt;</span>roupId></code>
+<code>  <span class="tag">&lt;artifactId&gt;</span>feign-gson<span class="tag">&lt;/artifactId&gt;</span></code>
+<code>  <span class="tag">&lt;version&gt;</span>${feign.version}<span class="tag">&lt;/version&gt;</span></code>
+<code><span class="tag">&lt;/dependency&gt;</span></code>
+<code><span class="tag">&lt;dependency&gt;</span></code>
+<code>  <span class="tag">&lt;groupId&gt;</span>io.github.openfeign<span class="tag">&lt;/&gt;</span>roupId></code>
+<code>  <span class="tag">&lt;artifactId&gt;</span>feign-slf4j<span class="tag">&lt;/artifactId&gt;</span></code>
+<code>  <span class="tag">&lt;version&gt;</span>${feign.version}<span class="tag">&lt;/version&gt;</span></code>
+<code><span class="tag">&lt;/dependency&gt;</span></code>
+</pre>
+<style>
+#maven pre {
+  font-size: 12px;
+}
+</style>
+</section>
+
+<section class="slide code" id="interface">
+  <h2>Interface</h2>
+  <pre>
+<code><span class="keyword">import</span> feign.*;</code>
+<code><span class="keyword">import</span> java.util.<span class="className">List</span>;</code>
+<code> </code>
+<code><span class="annotation">@Headers</span>(<span class="string">"Content-Type: application/json"</span>)</code>
+<code><span class="keyword">public</span> <span class="keyword">interface</span> <span class="className">CatClient</span> {</code>
+<code>  <span class="annotation">@RequestLine</span>(<span class="string">"GET /"</span>)</code>
+<code>  <span class="className">List</span>&lt;<span class="className">Cat</span>&gt; findAll();</code>
+<code> </code>
+<code>  <span class="annotation">@RequestLine</span>(<span class="string">"GET /{id}"</span>)</code>
+<code>  <span class="className">Cat</span> findById(<span class="annotation">@Param</span>(<span class="string">"id"</span>) <span class="className">String</span> id);</code>
+<code> </code>
+<code>  <span class="annotation">@RequestLine</span>(<span class="string">"POST /"</span>)</code>
+<code>  <span class="className">Cat</span> create(<span class="className">Cat</span> newCat);</code>
+<code> </code>
+<code>  <span class="annotation">@RequestLine</span>(<span class="string">"DELETE /{id}"</span>)</code>
+<code>  <span class="className">Cat</span> delete(<span class="annotation">@Param</span>(<span class="string">"id"</span>) <span class="className">String</span> id);</code>
+<code>}</code>
+</pre>
+<style>
+#interface pre {
+  font-size: 12px;
+}
+</style>
+</section>
+
+<section class="slide code" id="builder">
+  <h2>Feign Builder</h2>
+  <pre>
+<code><span class="className">CatClient</span> client = <span class="className">Feign</span>.builder()</code>
+<code>  <span class="comment">// Create request body</span></code>
+<code>  .encoder(<span class="keyword">new</span> <span class="className">GsonEncoder</span>())</code>
+<code>  <span class="comment">// Transform response body</span></code>
+<code>  .decoder(<span class="keyword">new</span> <span class="className">GsonDecoder</span>())</code>
+<code>  <span class="comment">// Add custom header</span></code>
+<code>  .requestInterceptor(template -> template.header(<span class="string">"Date"</span>, <span class="className">Instant</span>.now().toString()))</code>
+<code>  <span class="comment">// Tips: debug lite</span></code>
+<code>  .requestInterceptor(<span class="className">System</span>.out::println)</code>
+<code>  <span class="comment">// Tips: debug with logger</span></code>
+<code>  .logLevel(<span class="className">Logger</span>.<span class="className">Level</span>.FULL)</code>
+<code>  .logger(new <span class="className">Slf4jLogger</span>())</code>
+<code>  .target(<span class="className">CatClient</span>.<span class="keyword">class</span>, url);</code>
+</pre>
+<style>
+#builder pre {
+  font-size: 14px;
+}
+</style>
+</section>
+
 <section class="slide" id="ext1">
   <h2>Encoders &amp; Decoders</h2>
   <ul>
@@ -290,8 +381,7 @@
 
 <section class="slide blue center" id="live3">
   <h2><span class="fa fa-code"></span> Live coding</h2>
-  <h3>Async with <img src="pictures/Rx.png" alt="ReactiveX"></h3>
-  <h3>Circuit Breaker with <img src="pictures/hystrix.png" alt="Hystrix"></h3>
+  <h3>Async with <img src="pictures/Rx.png" alt="ReactiveX">, &amp; Circuit Breaker with <img src="pictures/hystrix.png" alt="Hystrix"></h3>
   <p>
     <span class="fa fa-github"></span>
     <a href="https://github.com/ilaborie/feign-live/tree/base-cb">See code on github</a>
@@ -308,6 +398,35 @@
   </style>
 </section>
 
+<section class="slide code" id="observable">
+  <h2>With Hystrix</h2>
+  <pre>
+<code><span class="comment">// Fallback implementation</span></code>
+<code><span class="className">CatClient</span> fallback = () -> {</code>
+<code>    <span class="className">Cat</span> cat = <span class="keyword">new</span> <span class="className">Cat</span>(<span class="string">"Chuck Norris's cat"</span>, <span class="className">CatRace</span>.Sphynx);</code>
+<code>    return <span class="className">Observable</span>.just(<span class="className">Collections</span>.singletonList(cat));</code>
+<code>};</code>
+<code> </code>
+<code><span class="comment">// Get Client with CircuitBreaker</span></code>
+<code><span class="className">CatClient</Span> client = <span class="className">HystrixFeign</span>.builder()</code>
+<code>    <span class="comment">// ...</span></code>
+<code>    .target(<span class="className">CatClient</span>.<span class="keyword">class</span>, url, fallback);</code>
+<code> </code>
+<code><span class="comment">// Find All every 2 seconds</span></code>
+<code><span class="className">Observable</span>.interval(2, SECONDS)</code>
+<code>    .flatMap(i -> client.findAll()) <span class="comment">// to Observable&lt;List&lt;Cat&gt;&gt;</span></code>
+<code>    .flatMap(<span class="className">Observable</span>::from) <span class="comment">// unfold to Observable&lt;Cat&gt;</span></code>
+<code>    .forEach(<span class="className">System</span>.out::println);</code>
+</pre>
+<style>
+#observable pre {
+  font-size: 14px;
+}
+</style>
+</section>
+
+
+<!--
 <section class="slide" id="java9">
   <h2>Incoming train ....</h2>
   <p><a href="http://www.java9countdown.xyz/">Countdown to Java 9</a></p>
@@ -320,12 +439,15 @@
   <p><code>docker run openjdk:9 java -version</code></p>
   <p><code>docker run maven:3-jdk-9 mvn -version</code></p>
 </section>
+-->
 
 <section class="slide" id="jep110">
   <h2><a href="http://openjdk.java.net/jeps/110">JEP 110: HTTP/2 Client</a></h2>
   <p>
     <span class="fa fa-book"></span>
-    <a href="http://download.java.net/java/jdk9/docs/api/java/net/http/package-summary.html">java.net.http</a>
+    <a href="http://download.java.net/java/jdk9/docs/api/java/net/http/package-summary.html">java.net.http</a>, See
+    <a href="http://cfp.devoxx.be/2016/talk/TXB-7643/The_New_JDK_HTTP_Client_API">The New JDK HTTP Client API</a>
+    Room 9, Thursday from 09:30 til 10:30, by <a href="http://cfp.devoxx.be/2016/speaker/michael_mcmahon">Michael McMahon</a>
   </p>
   <pre>
 <code><span class="className">URI</span> uri = new <span class="className">URI</span>(<span class="string">"http://127.0.0.1:8080/hello"</span>)</code>
@@ -359,6 +481,36 @@
       margin-left: 1rem;
     }
   </style>
+</section>
+
+<section class="slide code" id="java9-code">
+  <h2>Custom Client with Java 9</h2>
+  <pre>
+<code><span class="className">HttpRequest</span>.<span class="className">Builder</span> builder = <span class="className">HttpRequest</span>.create(new <span class="className">URI</span>(request.url()));</code>
+<code><span class="comment">// Handle body</span></code>
+<code><span class="keyword">byte</span>[] bytes = request.body();</code>
+<code><span class="keyword">boolean</span> isBodyEmpty = bytes == null || bytes.length == 0;</code>
+<code>builder = builder.body(isBodyEmpty?noBody():fromByteArray(bytes));</code>
+<code><span class="comment">// Apply headers</span></code>
+<code>for (<span class="className">Map</span>.<span class="className">Entry</span>&lt;<span class="className">String</span>, <span class="className">Collection</span>&tl;<span class="className">String</span>&gt;&gt; entry : request.headers().entrySet()) {</code>
+<code>    <span class="className">String</span> values = entry.getValue().stream().collect(<span class="className">Collectors</span>.joining(<span class="string">", "</span>));</code>
+<code>    builder = builder.setHeader(entry.getKey(), values);</code>
+<code>}</code>
+<code><span class="comment">// Execute request</span></code>
+<code><span class="className">HttpResponse</Span> response = builder.method(request.method()).response();</code>
+<code> </code>
+<code><span class="comment">// Build Feign response</span></code>
+<code><span class="keyword">return</span> <span class="className">Response</span>.builder()</code>
+<code>    .status(response.statusCode())</code>
+<code>    .headers(mapList2MapCollection(response.headers().map()))</code>
+<code>    .body(response.body(<span class="className">HttpResponse</span>.asByteArray()))</code>
+<code>    .build();</code>
+  </pre>
+<style>
+#java9-code pre {
+  font-size: 12px;
+}
+</style>
 </section>
 
 <section class="slide" id="other">
@@ -408,7 +560,7 @@
 </section>
 
 <section class="slide blue center">
-  <h2><a href="http://bit.ly/devfest-feign">http://bit.ly/devoxx-feign</a></h2>
+  <h2><a href="http://bit.ly/devoxx-feign">http://bit.ly/devoxx-feign</a></h2>
 </section>
 
 <div class="progress"></div>
