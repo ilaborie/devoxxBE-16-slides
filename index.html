@@ -22,13 +22,16 @@
       padding-top: 32px;
       color: #00b0f0;
       font-size: 1rem;
-      background: url(pictures/devoxx_logo.png) no-repeat;
+      background-repeat: no-repeat;
+      background-image: url(pictures/devoxx.dark.svg);
+      background-size: 250px;
       background-position: right;
       padding-left: 100px;
       content: '#Devoxx #Feign @ilaborie';
     }
 
     .slide.blue::before {
+      background-image: url(pictures/devoxx.svg);
       color: #fff;
     }
 
@@ -344,6 +347,10 @@
   </p>
   <p>Or the <code><a href="https://github.com/OpenFeign/feign/tree/master/hystrix">feign-hystrix</a></code>
     provide <a href="https://github.com/ReactiveX/RxJava">RxJava</a> support</p>
+  <p class="note">
+    POC implementation with <a href="https://github.com/reactor/reactor-core">Reactor core 3</a> on my
+    <span class="fa fa-github"></span> <a href="https://github.com/ilaborie/feign-reactor">feign-reactor</a>
+  </p>
 </section>
 
 <section class="slide" id="circuit-breaker">
